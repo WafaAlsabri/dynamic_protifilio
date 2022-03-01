@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <script src="https://kit.fontawesome.com/0258162a56.js" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+
+<title>profile</title>
+   
+  </head>
+  <body>
+  
+    
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+          
+    <%- include('./partials/sidebar.ejs') %>
+          <!--profile-->
+
+          <div class="container siz"> 
+            <div class="row d-flex mx-5">
+                <div class="col-md-7 col-sd-3">
+                    <div class="card p-3 py-4">
+                        <div class="text-center"> <img src="img/xxx.jpg" width="100" class="rounded-circle"> </div>
+                        <div class="text-center mt-3"> 
+                            <h5 class="mt-2 mb-0">Wafa Alsabri</h5> <span class="text-danger">graphic Designer&web developer</span>
+                            <form action="/user" method="POST" autocomplete="off">
+                              <div class="mb-2 my-4">
+                                
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter email" >
+                               
+                               
+                            
+                              <div class="mb-3">
+                                <br>
+                                <input type="fullname" class="form-control" id="exampleInputPassword1" placeholder="full name">
+                                <Br>
+                                <input type="mobile" class="form-control" id="exampleInputPassword1" placeholder="mobile">
+                                <br>
+                                <input type="city" class="form-control" id="exampleInputPassword1" placeholder="city">
+                                <i data-bs-toggle="modal" data-bs-target="#myModal2" class="far fa-edit" style="color:green; font-size: 1em; margin: .2em;" ></i>
+                                <i   data-bs-toggle="modal" data-bs-target="#myModal" class="fas fa-trash-alt" style="color:red; font-size: 1em; margin: .2em;"></i>    </div>
+                                <a class="btn btn-secondary" href="/user/list"><i class="fa fa-list-alt"></i> View All</a>
+                              <button class="btn btn-primary px-4 ms-3" style="background-color: purple;">Submit</button>
+                            </form>
+                            <ul class="social-list">
+                                <li><i class="fa fa-facebook"></i></li>
+                                <li><i class="fa fa-dribbble"></i></li>
+                                <li><i class="fa fa-instagram"></i></li>
+                                <li><i class="fa fa-linkedin"></i></li>
+                                <li><i class="fa fa-google"></i></li>
+                            </ul>
+                      
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+   <!--edit model-->
+   <div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <form class="container m-1">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+           
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">phone</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="background-color: #b46ac9;">Submit</button>
+          </form>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm delet</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+         Are you shur you wont delet
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <script src="js/all.min.js"></script>
+</body>
+ 
+</html>

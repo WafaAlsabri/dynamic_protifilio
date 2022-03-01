@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474F;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 24px;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+.bad{background-color: #dcdee0; }
+#sidebar .nav a i{
+  margin-right: 16px;
+}
+/*profile*/
+
+.card {
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.card:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #E1BEE7;
+    transform: scaleY(1);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #8E24AA;
+    transform: scaleY(0);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after {
+    transform: scaleY(1)
+}
+
+.fonts {
+    font-size: 11px
+}
+
+.social-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0
+}
+
+.social-list li {
+    padding: 10px;
+    color: #8E24AA;
+    font-size: 19px
+}
+
+.buttons button:nth-child(1) {
+    border: 1px solid #8E24AA !important;
+    color: #8E24AA;
+    height: 40px
+}
+
+.buttons button:nth-child(1):hover {
+    border: 1px solid #8E24AA !important;
+    color: #fff;
+    height: 40px;
+    background-color: #8E24AA
+}
+
+.buttons button:nth-child(2) {
+    border: 1px solid #8E24AA !important;
+    background-color: #8E24AA;
+    color: #fff;
+    height: 40px
+}
+
+
+/*profile*/
+
+.skillbar {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.skillbar-bar:before {
+  background: #eee;
+  content: "";
+  height: 3px;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.skillbar-bar {
+  height: 3px;
+  width: 0px;
+  background: #6c46f3;
+  transition-property: width, background-color;
+}
+
+.skillbar-title {
+  color: #35176b;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.skill-bar-percent {
+  float: right;
+  display: inline-block;
+  color: #323232;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* CENTERING ONLY */
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+@media screen and (max-width: 768px) {
+  .py-4 {
+    height: 34em;
+    right: -9em;
+    position: relative;
+    /* margin-right: 5em; */
+    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem!important;
+  }
+  
+  
+  .bad{background-color: #dcdee0;    margin-right: -18em;}}
