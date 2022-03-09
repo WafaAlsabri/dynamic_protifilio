@@ -14,7 +14,7 @@
 <!-- Bootstrap CSS -->
 
 <title>profile</title>
-   
+ 
   </head>
   <body>
   
@@ -28,8 +28,8 @@
           <div class="container siz"> 
             <div class="row d-flex mx-5">
                 <div class="col-md-7 col-sd-3">
-                    <div class="card p-3 py-4">
-                        <div class="text-center"> <img src="img/xxx.jpg" width="100" class="rounded-circle"> </div>
+                    <div class="card p-3" style="margin-top: 4em;">
+                        <div class="text-center"> <img src="img/xxx.jpg" width="100" class="rounded-circle "> </div>
                         <div class="text-center mt-3"> 
                             <h5 class="mt-2 mb-0">Wafa Alsabri</h5> <span class="text-danger">graphic Designer&web developer</span>
                             <form action="/user" method="POST" autocomplete="off">
@@ -46,8 +46,7 @@
                                 <input type="mobile" class="form-control" id="exampleInputPassword1" placeholder="mobile">
                                 <br>
                                 <input type="city" class="form-control" id="exampleInputPassword1" placeholder="city">
-                                <i data-bs-toggle="modal" data-bs-target="#myModal2" class="far fa-edit" style="color:green; font-size: 1em; margin: .2em;" ></i>
-                                <i   data-bs-toggle="modal" data-bs-target="#myModal" class="fas fa-trash-alt" style="color:red; font-size: 1em; margin: .2em;"></i>    </div>
+                              </div>
                                 <a class="btn btn-secondary" href="/user/list"><i class="fa fa-list-alt"></i> View All</a>
                               <button class="btn btn-primary px-4 ms-3" style="background-color: purple;">Submit</button>
                             </form>
@@ -58,7 +57,9 @@
                                 <li><i class="fa fa-linkedin"></i></li>
                                 <li><i class="fa fa-google"></i></li>
                             </ul>
-                      
+                           
+                            <i data-bs-toggle="modal" data-bs-target="#myModal2" class="far fa-edit" style="color:green; font-size: 1em; margin: .2em;" ></i>
+                            <i   data-bs-toggle="modal" data-bs-target="#myModal" class="fas fa-trash-alt" style="color:red; font-size: 1em; margin: .2em;"></i>   
                               
                         </div>
                     </div>
@@ -79,11 +80,11 @@
            
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">phone</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="exampleInputPassword1" class="form-label">link</label>
+              <input type="url" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">password</label>
+              <label for="exampleInputPassword1" class="form-label">icon</label>
               <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
             

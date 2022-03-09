@@ -2,11 +2,11 @@ const { Router } = require('express');
 const assert = require("assert")
 const multer = require('multer');
 const path = require('path');
-const User = require('./../models/information');
-const Skills = require('./../models/dash-skills');
-const Exper = require('./../models/dash-exper');
-const Service = require('./../models/dash-service');
-const Contact = require('./../models/dash-contact');
+const User = require('../models/user_collection');
+const Skills = require('../models/skill_collection');
+const Exper = require('../models/experince_collectio');
+const Service = require('../models/services_collection');
+const Contact = require('../models/contact_collection');
 
 
 
@@ -41,51 +41,58 @@ const router = Router();
 
 
 
-/* GET index page. */
+
 router.get('/login', (req, res) => {
   res.render('login', { title: 'login Page'})
 })
-router.get('/', function(req, res, next) {
-  res.render('index', {
-    title: ' User porfilo ',
-  });
-});
-router.get('/index', function(req, res, next) {
-  res.render('index', {
-    title: ' User porfilo ',
-  });
-});
+router.get('/', async(req, res)=> {
+  
+  var skill_i= await Skills.find();
+  var experience_i= await Exper.find();
+ 
+  res.render('index',{skills:skill_i,exper:experience_i});
+ });
+
+router.get('/index', async(req, res)=> {
+  
+  var skill_i= await Skills.find();
+  var experience_i= await Exper.find();
+ 
+  res.render('index',{skills:skill_i,exper:experience_i});
+ });
+
 // Skills page
-router.get('/skills', function(req, res, next) {
+router.get('/my-skill', function(req, res, next) {
   Skills.find().then((result)=>{
     console.log(result);
-    res.render('skills', { skills:result});
+    res.render('my-skill', { skills:result});
   })
   });
-// exper page
+
 router.get('/sidebar', function(req, res, next) {
   Exper.find().then((result)=>{
     res.render('sidebar', { exper:result});
     
+  })
+  });
+
+// exper page
+router.get('/my-experince', function(req, res, next) {
+  Exper.find().then((result)=>{
+    res.render('my-experince', { exper:result});
+    
     console.log(result);
     
   })
   });
-// Service page
-router.get('/experinces', function(req, res, next) {
-  Service.find().then((result)=>{
-    res.render('experinces', { Service:result});
-  console.log(result);
-  })
-  });
 
-  // contact page
-router.get('/Education', function(req, res, next) {
-  Contact.find().then((result)=>{
-    res.render('Education', { Contact:result});
-  console.log(result);
-  })
-  });
+  // services page
+  router.get('/my-service', function(req, res, next) {
+    Service.find().then((result)=>{
+      res.render('my-service', { Service:result});
+    console.log(result);
+    })
+    });
 // user operation
 const userFilesHandler = upload.fields([
 ]);
@@ -107,7 +114,7 @@ router.post('/addskills', function(req, res, next) {
   skillDetails.save();
         
 console.log("skill was add")
-res.redirect('/skills');
+res.redirect('/my-skill');
 
 });
 
@@ -126,15 +133,53 @@ router.post('/Edit_skills', function(req, res, next){
     console.log("item updated");
     console.log(item);
   })
-  res.redirect('/skills');
+  res.redirect('/my-skill');
 });
+router.post('/Edit_skills', function(req, res, next){
+  
+  var item = {
+    categotry:req.body.categotry,
+    skill_name: req.body.skill_name,
+   
+    progress_percent: req.body.progress_percent,
+  };
+  var id = req.body.id;
+  Skills.updateone({"_id": id}, {$set: item}, item, function(err, result){
+   
+    console.log("item updated");
+    console.log(item);
+  })
+  res.redirect('/my-skill');
+});
+
+router.get('/hide_skill/:id', async function(req, res, next){
+  console.log("hhhhhhhhhhhhhhhhhhh");
+  // var id = req.params.id.replace(/ /g,"");
+  const skill = await Skills.findById(req.params.id);
+
+  // console.log("adfadf");
+  // await Skills.updateone({"_id": id}, {    is_active: !skill.is_active  }, item, function(err, result){
+   
+  //   console.log("item hidden");
+  //   console.log(item);
+  // })
+
+  Skills.updateOne({"_id":req.params.id},{is_active: !skill.is_active},function(err,result){
+    console.log("item hidden");
+  })
+  res.redirect('/my-skill');
+});
+
+
+
+
 //Delete skill item
 
 router.get('/delete_skill/:id',function(req,res,next){
   Skills.deleteOne({"_id":req.params.id},function(err,result){
     console.log("item deleted");
   })
-  res.redirect('/skills');
+  res.redirect('/my-skill');
 
 });
 
@@ -143,13 +188,13 @@ router.post('/addexper', function(req, res, next) {
      
   var experDetails = new Exper({
     experince_name: req.body.experince_name,
-    place:req.body.place,
+    source:req.body.source,
     details:req.body.details,
     year: req.body.year,
   });
   experDetails.save();
 console.log("experince was add")
-res.redirect('/dash-Exper');
+res.redirect('/my-experince');
 
 });
 
@@ -157,7 +202,7 @@ res.redirect('/dash-Exper');
 router.post('/Edit_exper', function(req, res, next){
   var item = {
     experince_name: req.body.experince_name,
-    place:req.body.place,
+    source:req.body.source,
     details:req.body.details,
     year: req.body.year,
   };
@@ -167,38 +212,51 @@ router.post('/Edit_exper', function(req, res, next){
     console.log("item updated");
     console.log(item);
   })
-  res.redirect('/dash-Exper');
+  res.redirect('/my-experince');
 });
+
+//Delete exper item
+
+router.get('/delete_exper/:id',function(req,res,next){
+  Skills.deleteOne({"_id":req.params.id},function(err,result){
+    console.log("item deleted");
+  })
+  res.redirect('/my-experince');
+
+});
+
 
 ////////// add service
 router.post('/addservice', function(req, res, next) {
-     try{
-      var serviceDetails = new Service({
-        service_name: req.body.service_name,
-        details:req.body.details,
-      });
-      
-      serviceDetails.save();
-    console.log("Service was add")
-    res.redirect('/dash-Service');
-     }catch{
+  try{
+   var serviceDetails = new Service({
+    
+     service_name: req.body.service_name,
+     details:req.body.details,
+   });
+   
+   serviceDetails.save();
+ console.log("Service was add")
+ res.redirect('/my-service');
+  }catch{
 
-     }
+  }
 });
 
 // Edit sevice
 router.post('/Edit_service', function(req, res, next){
-  var item = {
-    service_name: req.body.service_name,
-    details:req.body.details,
-  };
-  var id = req.body.id;
-  Service.updateMany({"_id": id}, {$set: item}, item, function(err, result){
-   
-    console.log("item updated");
-    console.log(item);
-  })
-  res.redirect('/dash-Service');
+var item = {
+ 
+ service_name: req.body.service_name,
+ details:req.body.details,
+};
+var id = req.body.id;
+Service.updateMany({"_id": id}, {$set: item}, item, function(err, result){
+
+ console.log("item updated");
+ console.log(item);
+})
+res.redirect('/my-service');
 });
 
 
@@ -232,10 +290,9 @@ router.post('/Edit_contact', function(req, res, next){
   })
   res.redirect('/dash-contact');
 });
-router.get('*', function(req, res, next) {
-  res.render('404', {
+ router.get('*', function(req, res, next) {
+   res.render('page-404', {
     title: ' Error not found ',
-  });
-});
+  }); });
 module.exports = router;
 
